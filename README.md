@@ -73,14 +73,14 @@ In your `app/Config/bootstrap.php`:
 See docblock for complete list of component settings.
 
 Once you have your component setup, you will need to add your view.
-  
+
   * First create a `View/[ModelName]/datatable` folder
   * Create `action_name.ctp` view inside the folder
 
-The DataTableResponseView (automatically set by the component) class has a member called `dtResponse` which holds 
+The DataTableResponseView (automatically set by the component) class has a member called `dtResponse` which holds
 the return data for jquery datatables, including `aaData`.
 
-By default, the view var `$dtResults` will hold resultant model data after searching and paginating. It can be 
+By default, the view var `$dtResults` will hold resultant model data after searching and paginating. It can be
 customized with the `viewVar` setting.
 
 #### Example view file:
@@ -99,7 +99,7 @@ customized with the `viewVar` setting.
 
 	<?php
 	class Users extends AppModel {
-		public function customSearch($field, $searchTerm, $columnSearchTerm, $conditions) {
+		public function customSearch($field, $searchTerm, $columnSearchTerm, &$conditions) {
 			if ($searchTerm) {
 				$conditions[] = array("$field LIKE" => '%' . $searchTerm);	// only do left search
 			}
